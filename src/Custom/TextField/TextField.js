@@ -45,7 +45,7 @@ export function MTextFieldRendrer(props) {
       />
       <div class="text-group">
         <${TextfieldComp}
-          class="fjs-input autocompleteInput"
+          class="fjs-input customInput"
           type="text"
           disabled=${disabled}
           readonly=${readonly}
@@ -59,28 +59,41 @@ export function MTextFieldRendrer(props) {
     </div>
   `;
 
-  // return (
+  //// below code is working
+  // return html`
   //   <div
-  //     class={formFieldClasses(mTextfieldType, {
+  //     class=${formFieldClasses(mTextfieldType, {
   //       errors,
   //       disabled,
   //       readonly,
   //     })}
   //   >
-  //     <Label id={prefixId(id, formId)} label={label} required={required} />
+  //     <${Label}
+  //       id=${prefixId(id, formId)}
+  //       label=${label}
+  //       required=${required}
+  //     />
   //     <div class="text-group">
-  //       <TextfieldComp />
+  //       <input
+  //         class="fjs-input customInput"
+  //         type="text"
+  //         disabled=${disabled}
+  //         readonly=${readonly}
+  //         id=${prefixId(id, formId)}
+  //         onInput=${onTextChange}
+  //         aria-describedby=${errorMessageId}
+  //       />
   //     </div>
-  //     <Description description={description} />
-  //     <Errors errors={errors} id={errorMessageId} />
+  //     <${Description} description=${description} />
+  //     <${Errors} errors=${errors} id=${errorMessageId} />
   //   </div>
-  // );
+  // `;
 }
 
 MTextFieldRendrer.config = {
   ...Textfield.config,
   type: mTextfieldType,
-  label: "Material text field",
+  label: "Custom text field",
   group: "basic-input",
   emptyValue: "",
   iconUrl: "https://cdn-icons-png.flaticon.com/512/5136/5136012.png",
